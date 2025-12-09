@@ -35,9 +35,7 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // Route: POST /submit
   if (req.method === 'POST' && req.url === '/submit') {
-    // Only accept JSON
     const contentType = req.headers['content-type'];
     if (!contentType || !contentType.includes('application/json')) {
       res.writeHead(400, { 'Content-Type': 'text/plain' });
