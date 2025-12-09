@@ -1,4 +1,3 @@
-// server.js
 const http = require('http');
 const url = require('url');
 const PORT = 4000;
@@ -41,7 +40,6 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // GET /students - Return all students
   if (method === 'GET' && path === '/students') {
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(students));
