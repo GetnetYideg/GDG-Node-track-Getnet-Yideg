@@ -1,0 +1,24 @@
+{
+  "name": "gdg",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GetnetYideg/GDG-Node-track-Getnet-Yideg.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GetnetYideg/GDG-Node-track-Getnet-Yideg/issues"
+  },
+  "homepage": "https://github.com/GetnetYideg/GDG-Node-track-Getnet-Yideg#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
