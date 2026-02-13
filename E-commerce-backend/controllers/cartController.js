@@ -1,7 +1,6 @@
 import{ cart as Cart } from '../models/cart.js'
 import{ Product } from '../models/product.js'
 
-// Helper to get or create the global cart
 const getCart = async () => {
   let cart = await Cart.findOne();
   if (!cart) {
@@ -48,7 +47,6 @@ export const addToCart = async (req, res) => {
 };
 
 export const updateCart = async (req, res) => {
-  // Assuming body: { items: [{ productId, quantity }] } to update entire cart
   const { items } = req.body;
   if (!Array.isArray(items)) return res.status(400).json({ message: 'Items must be an array' });
 

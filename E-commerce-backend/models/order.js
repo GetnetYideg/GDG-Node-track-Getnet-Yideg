@@ -9,7 +9,7 @@ const orderItemSchema = new mongoose.Schema({
 const orderSchema = new mongoose.Schema({
   items: [orderItemSchema],
   total: { type: Number, required: true },
-  customerInfo: { type: Object, required: true }, // e.g., { name, email, address }
+  customerInfo: { type: Object, required: true }, 
   date: { type: Date, default: Date.now },
 });
 

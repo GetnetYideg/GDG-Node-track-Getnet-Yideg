@@ -6,13 +6,12 @@ export const createOrder = async (req, res) => {
   if (!customerInfo) return res.status(400).json({ message: 'Customer info required' });
 
   try {
-    const cart = await getCart(); // From cartController helper
+    const cart = await getCart();
     if (cart.items.length === 0) return res.status(400).json({ message: 'Cart is empty' });
 
     let total = 0;
     const orderItems = [];
 
-    // Validate stock and calculate total
     for (const item of cart.items) {
       const product = await Product.findById(item.productId);
       if (!product) return res.status(404).json({ message: `Product ${item.productId} not found` });
@@ -21,18 +20,15 @@ export const createOrder = async (req, res) => {
       orderItems.push({ productId: item.productId, quantity: item.quantity, price: product.price });
     }
 
-    // Deduct stock
     for (const item of cart.items) {
       const product = await Product.findById(item.productId);
       product.stock -= item.quantity;
       await product.save();
     }
 
-    // Create order
     const order = new Order({ items: orderItems, total, customerInfo });
     await order.save();
 
-    // Clear cart
     cart.items = [];
     await cart.save();
 

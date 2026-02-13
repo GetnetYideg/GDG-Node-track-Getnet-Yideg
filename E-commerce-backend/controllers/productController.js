@@ -26,9 +26,11 @@ export const getProductById = async (req, res) => {
 
 export const createProduct = async (req, res) => {
   const { name, description, price, stock, category, imageUrl } = req.body;
+  
   if (!name || price <= 0 || stock < 0) {
     return res.status(400).json({ message: 'Invalid input: name required, price > 0, stock >= 0' });
   }
+
   try {
     const product = new Product({ name, description, price, stock, category, imageUrl });
     await product.save();
